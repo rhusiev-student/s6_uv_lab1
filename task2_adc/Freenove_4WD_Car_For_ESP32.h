@@ -78,8 +78,8 @@ void Set_Battery_Coefficient(float coefficient);//Set the partial pressure coeff
 // Joystick
 #define PIN_JOYSTICK_X 13
 #define PIN_JOYSTICK_Y 14
-void joystick_read_x(void);
-void joystick_read_y(void);
+int joystick_read_x();
+int joystick_read_y();
 
 
 #endif

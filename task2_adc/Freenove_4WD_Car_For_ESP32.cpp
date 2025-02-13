@@ -219,11 +219,11 @@ void Set_Battery_Coefficient(float coefficient)
   batteryCoefficient = coefficient;
 }
 
-void joystick_read_x(void) {
+int joystick_read_x() {
     pinMode(PIN_JOYSTICK_X, INPUT);
     return analogRead(PIN_JOYSTICK_X);
 }
-void joystick_read_y(void) {
+int joystick_read_y() {
     pinMode(PIN_JOYSTICK_Y, INPUT);
     return analogRead(PIN_JOYSTICK_Y);
 }
