@@ -11,9 +11,9 @@ void setup() {
 }
 
 void loop() {
-  Serial.print("Joystick X : ");
-  Serial.println(joystick_read_x());
-  Serial.print("Joystick Y : ");
+  Serial.print("Joystick X, Y : ");
+  Serial.print(joystick_read_x());
+  Serial.print(" ");
   Serial.println(joystick_read_y());
   delay(300);
 }

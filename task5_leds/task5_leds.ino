@@ -15,95 +15,105 @@ Freenove_ESP32_WS2812 strip = Freenove_ESP32_WS2812(LEDS_COUNT, LEDS_PIN, CHANNE
 
 void setup() {
   strip.begin();		  //Initialize WS2812
-  strip.setBrightness(10);//Set the brightness of WS2812
+  strip.setBrightness(255);//Set the brightness of WS2812
 }
 
-void bright() {
-  strip.setBrightness(255);
-  strip.setLedColorData(1, 50, 50, 255);
-  strip.setLedColorData(4, 50, 50, 255);
-  strip.setLedColorData(7, 50, 50, 255);
-  strip.setLedColorData(10, 50, 50, 255);
+void back() {
+  strip.setLedColorData(8, 100, 0, 0);
+  strip.setLedColorData(9, 100, 0, 0);
   strip.show();
 }
 
-void not_so_bright() {
-  strip.setBrightness(96);
-  strip.setLedColorData(1, 50, 50, 255);
-  strip.setLedColorData(4, 50, 50, 255);
-  strip.setLedColorData(7, 50, 50, 255);
-  strip.setLedColorData(10, 50, 50, 255);
+void front() {
+  strip.setLedColorData(2, 255, 255, 255);
+  strip.setLedColorData(3, 255, 255, 255);
   strip.show();
 }
 
-void off() {
-  strip.setLedColorData(1, 0, 0, 0);
-  strip.setLedColorData(4, 0, 0, 0);
-  strip.setLedColorData(7, 0, 0, 0);
-  strip.setLedColorData(10, 0, 0, 0);
-  strip.show();
-}
-
-void turn_left() {
-  for (int i = 0; i < 4; i++) {
-    strip.setLedColorData(5, 50, 255, 50);
-    strip.setLedColorData(6, 50, 255, 50);
-    strip.show();
-    delay(500);
-    strip.setLedColorData(5, 0, 0, 0);
-    strip.setLedColorData(6, 0, 0, 0);
-    strip.show();
-    delay(500);
-  }
-}
-
-void turn_right() {
-  for (int i = 0; i < 4; i++) {
-    strip.setLedColorData(0, 50, 255, 50);
-    strip.setLedColorData(11, 50, 255, 50);
-    strip.show();
-    delay(500);
-    strip.setLedColorData(0, 0, 0, 0);
-    strip.setLedColorData(11, 0, 0, 0);
-    strip.show();
-    delay(500);
-  }
-}
-
-void brake() {
-  strip.setLedColorData(2, 255, 50, 50);
-  strip.setLedColorData(3, 255, 50, 50);
-  strip.setLedColorData(8, 255, 50, 50);
-  strip.setLedColorData(9, 255, 50, 50);
-  strip.show();
-}
-
-void off_brake() {
+void off_front() {
   strip.setLedColorData(2, 0, 0, 0);
   strip.setLedColorData(3, 0, 0, 0);
+  strip.show();
+}
+
+void off_back() {
   strip.setLedColorData(8, 0, 0, 0);
   strip.setLedColorData(9, 0, 0, 0);
   strip.show();
 }
 
+void turn_left() {
+  strip.setLedColorData(1, 255, 100, 50);
+  strip.setLedColorData(10, 255, 100, 50);
+  strip.show();
+  delay(100);
+  strip.setLedColorData(0, 255, 100, 50);
+  strip.setLedColorData(11, 255, 100, 50);
+  strip.show();
+  delay(500);
+  strip.setLedColorData(1, 0, 0, 0);
+  strip.setLedColorData(10, 0, 0, 0);
+  strip.show();
+  delay(100);
+  strip.setLedColorData(0, 0, 0, 0);
+  strip.setLedColorData(11, 0, 0, 0);
+  strip.show();
+}
+
+void turn_right() {
+  strip.setLedColorData(4, 255, 100, 50);
+  strip.setLedColorData(7, 255, 100, 50);
+  strip.show();
+  delay(100);
+  strip.setLedColorData(5, 255, 100, 50);
+  strip.setLedColorData(6, 255, 100, 50);
+  strip.show();
+  delay(500);
+  strip.setLedColorData(4, 0, 0, 0);
+  strip.setLedColorData(7, 0, 0, 0);
+  strip.show();
+  delay(100);
+  strip.setLedColorData(5, 0, 0, 0);
+  strip.setLedColorData(6, 0, 0, 0);
+  strip.show();
+}
+
+void brake() {
+  strip.setLedColorData(8, 255, 0, 0);
+  strip.setLedColorData(9, 255, 0, 0);
+  strip.show();
+}
+
 void loop() {
-  not_so_bright();
+  front();
+  delay(2000);
+  back();
   delay(2000);
   // my front of car is near batteries, because I'm scared of crashes into the sensors
-  turn_left();
+  for (int i = 0; i < 4; i++) {
+    turn_left();
+    delay(500);
+  }
   delay(2000);
-  turn_right();
+  for (int i = 0; i < 4; i++) {
+    turn_right();
+    delay(500);
+  }
   delay(2000);
   brake();
   delay(2000);
-  bright();
+  for (int i = 0; i < 4; i++) {
+    turn_left();
+    delay(500);
+  }
   delay(2000);
-  turn_left();
+  off_front();
   delay(2000);
-  off();
+  for (int i = 0; i < 4; i++) {
+    turn_right();
+    delay(500);
+  }
   delay(2000);
-  turn_right();
-  delay(2000);
-  off_brake();
+  off_back();
   delay(2000);
 }

@@ -17,11 +17,19 @@ void setup()
 void loop()
 {
   // Servo 1 motion path; 90°- 0°- 180°- 90°
-  Servo_Sweep(1, 90, 0, 10);
-  Servo_Sweep(1, 0, 170, 20);
-  Servo_Sweep(1, 170, 90, 30);
+  Servo_Sweep(1, 90, 0, 3);
+  Servo_Sweep(2, 90, 150, 4);
+  Servo_Sweep(2, 150, 90, 3);
+  Servo_Sweep(1, 0, 170, 4);
+  Servo_Sweep(2, 90, 150, 4);
+  Servo_Sweep(2, 150, 90, 3);
+  Servo_Sweep(1, 170, 90, 10);
 
   // Servo 2 motion path; 90°- 150°- 90°
-  Servo_Sweep(2, 90, 150, 40);
-  Servo_Sweep(2, 150, 90, 50);
+  Servo_Sweep(2, 90, 150, 4);
+  Servo_Sweep(2, 150, 90, 100);
+  Servo_Sweep(2, 90, 150, 4);
+  Servo_Sweep(2, 150, 90, 3);
+  Servo_Sweep(2, 90, 150, 4);
+  Servo_Sweep(2, 150, 90, 3);
 }
