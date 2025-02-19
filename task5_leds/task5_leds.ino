@@ -1,10 +1,3 @@
-/**********************************************************************
-  Product     : Freenove 4WD Car for ESP32
-  Description : Use WS2812.
-  Auther      : www.freenove.com
-  Modification: 2020/12/18
-**********************************************************************/
-
 #include "Freenove_WS2812_Lib_for_ESP32.h"
 
 #define LEDS_COUNT  12    //Define the count of WS2812

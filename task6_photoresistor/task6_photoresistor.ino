@@ -1,9 +1,3 @@
-/**********************************************************************
-  Filename    : Photosensitive_Sensor.ino
-  Product     : Freenove 4WD Car for ESP32
-  Auther      : www.freenove.com
-  Modification: 2020/12/18
-**********************************************************************/
 #include "motors.h"
 
 #define PHOTOSENSITIVE_PIN 33 //Define the pins that ESP32 reads photosensitive
