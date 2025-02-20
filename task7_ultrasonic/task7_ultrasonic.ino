@@ -25,27 +25,47 @@ void setup() {
   delay(500);          //Wait for the servo to arrive at the specified location
 }
 
+bool direction_left = true;
+
 void loop() {
   for (int i = 0; i < 50; i++) {
     for (int j = 0; j < 25; j++) {
       field[j][i] = ' ';
     }
   }
-  for (int i = 0; i < 34; ++i) {
-    int angle = i * 5;
-    Servo_1_Angle(angle);
-    delay(20);
-    float distance = Get_Sonar() / 12;
-    int x = 25 + distance * coss[i];
-    int y = distance * sins[i];
-    if (x >= 0 && x < 50 && y >= 0 && y < 25) {
-      field[y][x] = '#';
+  if (direction_left) {
+    for (int i = 0; i < 34; ++i) {
+      int angle = i * 5;
+      Servo_1_Angle(angle);
+      delay(40);
+      float distance = Get_Sonar() / 12;
+      int x = 25 + distance * coss[i];
+      int y = distance * sins[i];
+      if (x >= 0 && x < 50 && y >= 0 && y < 25) {
+        field[y][x] = '#';
+      }
+    }
+  } else {
+    for (int i = 34; i >= 0; --i) {
+      int angle = i * 5;
+      Servo_1_Angle(angle);
+      delay(40);
+      float distance = Get_Sonar() / 12;
+      int x = 25 + distance * coss[i];
+      int y = distance * sins[i];
+      if (x >= 0 && x < 50 && y >= 0 && y < 25) {
+        field[y][x] = '#';
+      }
     }
   }
+  direction_left = !direction_left;
   field[0][25] = '8';
   for (int j = 25; j >= 0; --j) {
     Serial.print('|');
-    Serial.print(field[j]);
+    for (int i = 0; i < 50; ++i) {
+      Serial.print(field[j][i]);
+      Serial.print(field[j][i]);
+    }
     Serial.println('|');
     delay(10);
   }
