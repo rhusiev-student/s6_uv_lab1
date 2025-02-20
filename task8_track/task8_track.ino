@@ -7,14 +7,24 @@ void setup() {
   Motor_Move(0, 0, 0, 0);
 }
 
+bool left = true;
+
 void loop() {
   Track_Read();
-  if (sensorValue[0] && !sensorValue[2]) {
-    Motor_Move(2000, 2000, 0, -1500);
-  } else if (!sensorValue[0] && sensorValue[1]) {
-    Motor_Move(0, -1500, 2000, 2000);
+  if (sensorValue[2] && !sensorValue[0]) {
+    Motor_Move(1500, 1500, -2000, -4000);
+    left = true;
+  } else if (!sensorValue[2] && sensorValue[0]) {
+    Motor_Move(-2000, -4000, 1500, 1500);
+    left = false;
+  } else if (!sensorValue[2] && !sensorValue[0] && !sensorValue[1]) {
+    if (left) {
+      Motor_Move(1500, 1500, -2000, -4000);
+    } else {
+      Motor_Move(-2000, -4000, 1500, 1500);
+    }
   } else {
-    Motor_Move(2000, 2000, 2000, 2000);
+    Motor_Move(2500, 2500, 2500, 2500);
   }
-  delay(50);
+  delay(10);
 }
